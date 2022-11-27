@@ -12,7 +12,8 @@
         }
         public class Query
         {
-            public const int DescriptionMinLength = 10;
+            public const int DescriptionMinLength = 5;
+            public const int DescriptionMaxLength = 300;
         }
 
         public class Car

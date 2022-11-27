@@ -23,7 +23,7 @@
 		public DateTime Date { get; set; }
 
 		[Required(ErrorMessage = "Описанието на проблема е задължително")]
-		[StringLength(int.MaxValue, MinimumLength = DescriptionMinLength, ErrorMessage = "Описанието на проблема трябва да съдържа минимум {2} символа")]
+		[StringLength(DescriptionMaxLength, ErrorMessage = "{0} трябва да съдържа минимум {2} и максимум {1} символа.", MinimumLength = DescriptionMinLength)]
 		public string Description { get; init; }
 
 		[Url(ErrorMessage = "Моля въведете правилен URL адрес")]
