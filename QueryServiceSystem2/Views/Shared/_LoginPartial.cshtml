@@ -1,0 +1,63 @@
+﻿@using QueryServiceSystem2.Services.Mechanics
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@inject IMechanicService Mechanics
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var userId = User.Id();
+        var userIsMechanic = Mechanics.IsMechanic(userId);
+        var userIsAdmin = User.IsAdmin();
+
+        @if (userIsMechanic && !userIsAdmin)
+        {
+            <li class="btn-outline-info">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Queries" asp-action="Mine">Моите заявки</a>
+            </li>
+        }
+        else if (!userIsAdmin)
+        {
+            <li class="btn-outline-info">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Mechanics" asp-action="Become">Регистрирай се като механик</a>
+            </li>
+        }
+        else if(userIsAdmin)
+        {
+            <li class="btn-outline-danger">
+                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Queries" asp-action="All">Управление на заявките</a>
+            </li>
+            <li class="btn-outline-danger">
+                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Mechanics" asp-action="AllMechanics">Потребители</a>
+            </li>
+           
+		}
+		else if (userIsAdmin || userIsMechanic)
+		{
+             <li class="btn-outline-warning">
+				<a class="nav-link text-dark" asp-area="" asp-controller="Queries" asp-action="AllReferences">Справка</a>
+			</li>
+		}
+
+        @*<li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Моят акаунт</a>
+        </li>*@
+
+        <li class="btn-outline-info">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Изход</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="btn-outline-info">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
+        </li>
+        <li class="btn-outline-info">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Вход</a>
+        </li>
+    }
+</ul>

@@ -1,0 +1,36 @@
+﻿@model BecomeMechanicFormModel
+
+@{
+    ViewBag.Title = "Регистрирай се като механик";
+}
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <h3 class="heading-margin text-center">За да можете да добавите заявка трябва да бъдете регистриран като механик.</h3>
+        <h2 class="heading-margin text-center">@ViewBag.Title</h2>
+
+		<form method="post">
+			<div class="form-group">
+				<label asp-for="Name">Три имена:</label>
+				<input asp-for="Name" class="form-control" placeholder="Милен Йорданов Иванов, Иван Георгиев Тонев, ...">
+				<span asp-validation-for="Name" class="small text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Code">Работен код на механик/ИД:</label>
+				<input asp-for="Code" class="form-control" placeholder="106149, 44323, 55532 ...">
+				<span asp-validation-for="Code" class="small text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="PhoneNumber">Телефонен номер</label>
+				<input asp-for="PhoneNumber" class="form-control" placeholder="+359-888-888-888 ...">
+				<span asp-validation-for="PhoneNumber" class="small text-danger"></span>
+			</div>
+
+			<input class="btn btn-primary mt-3" type="submit" value="Save" />
+		</form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

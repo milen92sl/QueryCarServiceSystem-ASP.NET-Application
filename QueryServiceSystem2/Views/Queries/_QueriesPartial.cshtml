@@ -1,0 +1,19 @@
+﻿@model IEnumerable<QueryServiceModel>
+
+<div class="row">
+	@foreach (var query in Model)
+	{
+<div class="col-md-4">
+	<div class="card mb-3">
+		<img class="card" src="@query.ImageUrl" alt="Заявка номер: @query.Id Дата и час: @query.Date (Автомобил: @query.CarName @query.CarModel Регистрацинен номер: @query.CarRegistrationNumber Описание: @query.Description)" />
+		<div class="card-body text-center">
+			<h5 class="card-title text-center">Заявка номер: @query.Id Дата и час: @query.Date Автомобил: @query.CarName @query.CarModel Цвят: @query.CarColor с регистрацинен номер: @query.CarRegistrationNumber | Описание на проблема: "@query.Description"</h5>
+			<a asp-controller="Queries" asp-action="Details" asp-route-id="@query.Id" asp-route-information="@query.GetInformation()" class="btn btn-primary">Прегледай</a>
+			@if (ViewBag.AllowQueryEdit == true || User.IsAdmin())
+			{
+				<a asp-controller="Queries" asp-action="Edit" asp-route-id="@query.Id" class="btn btn-warning">Редактирай</a>
+				<a asp-controller="Queries" asp-action="Delete" asp-route-id="@query.Id" class="btn btn-danger">Изтрий</a>}
+		</div>
+	</div>
+</div>}
+</div>

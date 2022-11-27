@@ -1,0 +1,87 @@
+﻿@model AllCarsQueryModel
+
+
+@{
+    ViewBag.Title = "Справка";
+}
+
+<form method="get">
+	<div class="row">
+		<div class="form-group col-md-4">
+			<div class="form-group">
+				<label asp-for="Brand">Филтриране на автомобили:</label>
+				<select asp-for="Brand" class="form-control">
+					<option value="">Всички автомобили</option>
+
+					@foreach (var query in Model.Brands)
+					{
+		                <option value="@query">@query</option>
+                    }
+				</select>
+				<button asp-for="Brand" class="btn btn-outline-primary w-50 my-5 my-sm-2" type="submit">Филтрирай</button>
+			</div>
+		</div>
+
+		<div class="form-group col-md-4">
+			<label asp-for="SearchTerm">Търсене по текст от описание:</label>
+			<input asp-for="SearchTerm" class="form-control" placeholder="" />
+			<button asp-for="SearchTerm" class="btn btn-outline-primary w-50 my-5 my-sm-2" type="submit">Търси</button>
+		</div>
+		<div class="form-group col-md-4">
+			<div class="form-group">
+				<label asp-for="Sorting">Подредба по:</label>
+				<select asp-for="Sorting" class="form-control">
+					<option value="0" selected>Име</option>
+					<option value="1">Дата</option>
+				</select>
+				<button asp-for="Sorting" class="btn btn-outline-primary w-50 my-5 my-sm-2" type="submit">Подреди</button>
+			</div>
+		</div>
+	</div>
+
+
+</form>
+
+@{
+    var previousPage = Model.CurrentPage - 1;
+    if (previousPage < 1)
+    {
+        previousPage = 1;
+    }
+
+    var maxPage = Math.Ceiling((double)Model.TotalQueries / 6);
+}
+
+<div class="row mb-5">
+    <div class="col-md-6">
+        <a class="btn btn-primary @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+           asp-controller="Queries"
+           asp-action="AllReferences"
+           asp-route-currentPage="@previousPage"
+           asp-route-id="@Model.Brand"
+           asp-route-searchTerm="@Model.SearchTerm"
+           asp-route-sorting="@((int)Model.Sorting)">< Предходна страница</a>
+    </div>
+
+    @{
+        var shouldButtonBeDisabled = Model.CurrentPage == maxPage ||
+                                     !Model.Queries.Any();
+    }
+
+    <div class="col-md-6">
+        <a class="btn btn-primary float-sm-right @(shouldButtonBeDisabled ? "disabled" : string.Empty)" style="margin-top: 10px"
+           asp-controller="Queries"
+           asp-action="AllReferences"
+           asp-route-currentPage="@(Model.CurrentPage + 1)"
+           asp-route-id="@Model.Brand"
+           asp-route-searchTerm="@Model.SearchTerm"
+           asp-route-sorting="@((int)Model.Sorting)">Следваща страница ></a>
+    </div>
+</div>
+
+@if (!Model.Queries.Any())
+{
+    <h1 class="text-center">Няма налични заявки.</h1>
+}
+
+<partial name="_QueriesPartialReferences" model="@Model.Queries" />

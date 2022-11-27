@@ -1,0 +1,62 @@
+﻿@model QueryFormModel
+
+<div class="row">
+	<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+		<h2 class="heading-magin text-center">Добави заявка за ремонт на автомобил</h2>
+		<form method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<h4 class="form-control">Номерът на заявката ви ще се генерира автоматично.</h4>
+				<input asp-for="Id" hidden class="form-control" placeholder="Номерът се генерира автоматично...">
+
+				<span asp-validation-for="Id" class="small text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Date">Дата и час:</label>
+				<input asp-for="Date" class="form-control" placeholder="Автоматично ще бъде вписана днешна дата...">
+				<span asp-validation-for="Date" class="small text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="CarId">Избери от списък с автомобили:</label>
+				<select asp-for="CarId" class="form-control">
+					@foreach (var Car in Model.Cars)
+					{
+		<option value="@Car.Id">Автомобил - Mарка: @Car.Name</option>}
+				</select>
+				<span asp-validation-for="CarId" class="small text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="CarModel">Модел на автомобил (вписва се ръчно):</label>
+				<input asp-for="CarModel" class="form-control" placeholder="Впиши коректен модел тук...">
+				<span asp-validation-for="CarModel" class="small text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="CarRegistrationNumber">Регистрационен номер на автомобил (вписва се ръчно):</label>
+				<input asp-for="CarRegistrationNumber" class="form-control" placeholder="Впиши коректен регистрационен номер тук...">
+				<span asp-validation-for="CarRegistrationNumber" class="small text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="CarColor">Цвят на автомобил (вписва се ръчно):</label>
+				<input asp-for="CarColor" class="form-control" placeholder="Впиши коректен цвят тук...">
+				<span asp-validation-for="CarColor" class="small text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="ImageUrl">Прикачи снимка на автомобила (URL):</label>
+				<input asp-for="ImageUrl" class="form-control" placeholder="Постави коректен URL адрес тук...">
+				<span asp-validation-for="ImageUrl" class="small text-danger">
+				</span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Description">Описание на проблема: </label>
+				<textarea asp-for="Description" rows="8" class="form-control" placeholder="Добави описание на проблема..."></textarea>
+				<span asp-validation-for="Description" class="small text-danger">
+				</span>
+				<input class="btn btn-primary mt-3" type="submit" value="Запиши" />
+			</div>
+		</form>
+	</div>
+</div>

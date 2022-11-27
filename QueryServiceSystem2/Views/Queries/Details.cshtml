@@ -1,0 +1,21 @@
+﻿@model QueryDetailsServiceModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<div class="card" style="width: 65rem; height:auto">
+    <img class="card-img" src="@Model.ImageUrl" alt="@Model.Brand @Model.Date">
+    <div class="card-body">
+        <h5 class="card-title">Заявка номер: @Model.Id</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Дата и час: @Model.Date</li>
+        <li class="list-group-item">Автомобил: @Model.CarName @Model.CarModel, Регистрационен номер: @Model.CarRegistrationNumber Цвят: @Model.CarColor</li>
+		<li class="list-group-item">Описание на проблема: @Model.Description</li>
+    </ul>
+</div>

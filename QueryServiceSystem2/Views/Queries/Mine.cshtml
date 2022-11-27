@@ -1,0 +1,13 @@
+﻿@model IEnumerable<QueryServiceModel>
+
+@{
+    ViewBag.Title = "Всички заявки";
+    ViewBag.AllowQueryEdit = true;
+}
+
+@if (!Model.Any())
+{
+    <h1 class="text-center">Все още нямате добавени заявки.</h1>
+}
+
+<partial name="_QueriesPartial" model="@Model" />

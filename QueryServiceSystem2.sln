@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryServiceSystem2", "QueryServiceSystem2\QueryServiceSystem2.csproj", "{2F1F7497-8FE2-4E71-B7C3-15F41133D731}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryServiceSystem2Test", "QueryServiceSystem2.Test\QueryServiceSystem2Test.csproj", "{B125C962-FDB7-4D83-8B89-5E5C6E6FEB02}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F1F7497-8FE2-4E71-B7C3-15F41133D731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F1F7497-8FE2-4E71-B7C3-15F41133D731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F1F7497-8FE2-4E71-B7C3-15F41133D731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F1F7497-8FE2-4E71-B7C3-15F41133D731}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B125C962-FDB7-4D83-8B89-5E5C6E6FEB02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B125C962-FDB7-4D83-8B89-5E5C6E6FEB02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B125C962-FDB7-4D83-8B89-5E5C6E6FEB02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B125C962-FDB7-4D83-8B89-5E5C6E6FEB02}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E863089-E6FD-4A24-A7E5-90F9D5D77611}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,17 @@
+﻿@model MechanicDetailsServiceModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<div class="card" style="width: 65rem; height:auto">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">@Model.Mechanic.Name</li>
+        <li class="list-group-item">@Model.Mechanic.Code</li>
+        <li class="list-group-item">@Model.Mechanic.PhoneNumber</li>
+    </ul>
+</div>

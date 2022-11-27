@@ -1,0 +1,31 @@
+﻿@model Mechanic
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div>
+    <h2>
+        Сигурни ли сте, че искате да изтриете този потребител ?
+    </h2>
+    <hr />
+    <dl class="row">
+        <h5 class="col-sm-2">
+            Потребител:
+        </h5>
+        <h7 class="col-sm-2">
+            ИД: @Html.DisplayFor(model => model.Id)
+            <br />
+            Имена: @Html.DisplayFor(model => model.Name)
+            Код на механик : @Html.DisplayFor(model => model.Code)
+            Телефонен номер: @Html.DisplayFor(model => model.PhoneNumber)
+        </h7>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="AllMechanics" type="submit" value="Back" class="btn btn-primary">Back</a>
+    </form>
+</div>
+
+
