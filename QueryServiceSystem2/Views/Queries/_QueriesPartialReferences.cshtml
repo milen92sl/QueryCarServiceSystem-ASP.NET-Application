@@ -7,7 +7,7 @@
 	<div class="card mb-2">
 		<img class="card" src="@query.ImageUrl" alt="Заявка номер: @query.Id Дата и час: @query.Date (Автомобил: @query.CarName @query.CarModel Регистрацинен номер: @query.CarRegistrationNumber Описание: @query.Description)" />
 		<div class="card-body text-center">
-			<h5 class="card-title text-center">Заявка номер: @query.Id Дата и час: @query.Date Автомобил: @query.CarName @query.CarModel Цвят: @query.CarColor с регистрацинен номер: @query.CarRegistrationNumber | Описание на проблема: "@query.Description"</h5>
+			<h5 class="card-title text-center">Заявка номер: @query.Id Дата и час: @query.Date Автомобил: @query.CarName @query.CarModel Цвят: @query.CarColor с регистрацинен номер: @query.CarRegistrationNumber | Имена на механик: @query.MechanicName <br /> Описание на проблема: "@query.Description"</h5>
 			<a asp-controller="Queries" asp-action="Details" asp-route-id="@query.Id" asp-route-information="@query.GetInformation()" class="btn btn-primary">Прегледай</a>
 			@if (ViewBag.AllowQueryEdit == true || User.IsAdmin())
 			{

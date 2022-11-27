@@ -19,6 +19,9 @@ namespace QueryServiceSystem2.Infrastructure
                 .ForMember(m => m.CarColor, cfg => cfg.MapFrom(f => f.Color))
                 .ForMember(c => c.CarName, cfg => cfg.MapFrom(c => c.Car.Name));
 
+            this.CreateMap<Mechanic, QueryServiceModel>()
+               .ForMember(m => m.MechanicName, cfg => cfg.MapFrom(f => f.Name));
+
             this.CreateMap<Mechanic, MechanicServiceModel>()
                 .ForMember(f => f.Id, cfg => cfg.MapFrom(f => f.Id))
                 .ForMember(f => f.Name, cfg => cfg.MapFrom(f => f.Name))

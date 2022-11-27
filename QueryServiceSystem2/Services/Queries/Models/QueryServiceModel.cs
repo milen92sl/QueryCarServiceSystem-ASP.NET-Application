@@ -12,6 +12,7 @@ namespace QueryServiceSystem2.Services.Queries.Models
         public string Brand { get; init; }
 
         public string CarName { get; init; }
+        public string MechanicName { get; init; }
 
         public string CarModel { get; set; }
 
